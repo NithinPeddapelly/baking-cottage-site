@@ -1,4 +1,4 @@
-import type { BakeryImage } from '@/data/bakery-types';
+import type { GalleryItem } from '@/data/gallery-items';
 import type { GalleryCategory } from '@/data/gallery-categories';
 
 export type CategoryCard = {
@@ -18,13 +18,19 @@ const categoryMeta: Array<{ title: CategoryCard['title']; description: string }>
   { title: 'Dessert Boxes', description: 'Curated sweet collections, perfect for gifting.' },
 ];
 
-export function buildCategoryCards(images: BakeryImage[]): CategoryCard[] {
-  if (images.length === 0) {
+export function buildCategoryCards(items: GalleryItem[]): CategoryCard[] {
+  if (items.length === 0) {
     return [];
   }
 
-  return categoryMeta.map((meta, index) => {
-    const image = images[index % images.length];
+  return categoryMeta.map((meta) => {
+    // Find images belonging to this category
+    const categoryImages = items.filter((img) => (img.category as string) === meta.title);
+    // Prefer a featured image; fall back to first in category, then first overall
+    const image =
+      categoryImages.find((img) => img.featured) ??
+      categoryImages[0] ??
+      items[0];
 
     return {
       title: meta.title,
@@ -34,3 +40,4 @@ export function buildCategoryCards(images: BakeryImage[]): CategoryCard[] {
     };
   });
 }
+
