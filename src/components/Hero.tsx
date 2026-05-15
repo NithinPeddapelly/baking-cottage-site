@@ -1,117 +1,144 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 
-export default function Hero() {
+import { buttonVariants } from '@/components/ui/button';
+import type { GalleryItem } from '@/data/gallery-items';
+import { cn } from '@/lib/utils';
+
+type HeroProps = {
+  images: GalleryItem[];
+};
+
+const collageLayout = [
+  'left-2 top-6 h-44 w-32 -rotate-6 sm:h-52 sm:w-40',
+  'left-24 top-0 h-52 w-40 rotate-3 sm:left-32 sm:h-64 sm:w-48',
+  'right-2 top-8 h-44 w-32 -rotate-2 sm:h-56 sm:w-40',
+  'left-4 bottom-8 h-40 w-28 rotate-6 sm:left-10 sm:h-48 sm:w-36',
+  'right-10 bottom-0 h-44 w-32 -rotate-3 sm:h-52 sm:w-40',
+];
+
+export default function Hero({ images }: HeroProps) {
+  const whatsappUrl = `https://wa.me/447733032675?text=${encodeURIComponent(
+    "Hi The Baking Cottage, I'd like to place an order for a custom cake in Edinburgh."
+  )}`;
+
+  const heroImages = images.slice(0, 5);
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-50 via-purple-50 to-amber-50 px-4 py-12 md:py-0 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
-      <div className="absolute bottom-0 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse" />
-      <div className="absolute top-40 right-20 w-96 h-96 bg-amber-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
+    <section
+      id="home"
+      className="relative isolate overflow-hidden bg-gradient-to-b from-[#FFF8FB] via-[#FDFBF4] to-[#FDFBF4] pb-12 pt-24 sm:pb-20 sm:pt-28"
+    >
+      <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[#F47FA8]/15 blur-3xl" />
+      <div className="pointer-events-none absolute -left-14 top-24 h-72 w-72 rounded-full bg-[#F47FA8]/20 blur-3xl" />
+      <div className="pointer-events-none absolute -right-14 bottom-8 h-72 w-72 rounded-full bg-[#B7C96B]/25 blur-3xl" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto text-center">
-        {/* Badge */}
-        <div className="mb-6 md:mb-8 animate-fadeIn">
-          <span className="inline-block px-4 py-2 bg-white/60 backdrop-blur-md rounded-full text-sm md:text-base font-medium text-purple-700 border border-purple-200/50 shadow-lg">
-            ✨ Halal Certified • Homemade with Love
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="text-center lg:text-left"
+        >
+          <span className="inline-flex items-center rounded-full border border-[#F47FA8]/30 bg-white/90 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#3B241A] backdrop-blur sm:px-4 sm:py-2 sm:text-sm">
+            <span className="md:hidden">Made Fresh Daily</span>
+            <span className="hidden md:inline">Made Fresh Daily • Handcrafted in Edinburgh</span>
           </span>
-        </div>
 
-        {/* Headline */}
-        <h1 className="mb-6 md:mb-8 text-4xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fadeIn">
-          <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-amber-600 bg-clip-text text-transparent">
-            The Baking Cottage
-          </span>
-        </h1>
+          <h1 className="font-display mx-auto mt-4 max-w-[14ch] text-[2.25rem] leading-[1.02] text-[#3B241A] sm:mt-6 sm:max-w-none sm:text-5xl md:text-6xl lg:text-7xl">
+            Handcrafted Cakes Made With Love
+          </h1>
 
-        {/* Tagline */}
-        <p className="mb-8 md:mb-10 text-lg md:text-2xl text-gray-700 font-light max-w-2xl mx-auto animate-fadeIn">
-          Luxurious Homemade Cakes & Treats from Edinburgh
-        </p>
+          <p className="mx-auto mt-4 max-w-lg text-sm leading-relaxed text-[#5B463D] sm:mt-5 sm:text-lg lg:mx-0">
+            Luxury homemade cakes, cupcakes, and celebration desserts designed to make every moment unforgettable.
+          </p>
 
-        {/* Description */}
-        <p className="mb-10 md:mb-12 text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed animate-fadeIn">
-          Crafted with premium ingredients, every cake is a masterpiece designed for your special moments. 
-          <span className="block mt-3 font-semibold text-purple-700">Halal certified, made fresh to order.</span>
-        </p>
+          <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:justify-center sm:gap-3 lg:justify-start">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(buttonVariants({ variant: 'whatsapp', size: 'default' }), 'sm:h-12 sm:px-8')}
+            >
+              Order Now
+            </a>
+            <a href="#contact" className={cn(buttonVariants({ variant: 'luxury', size: 'lg' }))}>
+              Custom Cakes
+            </a>
+            <Link href="#gallery" className={cn(buttonVariants({ variant: 'soft', size: 'default' }), 'sm:h-12 sm:px-8')}>
+              View Gallery
+            </Link>
+          </div>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center animate-fadeIn">
-          {/* WhatsApp Button */}
-          <a
-            href="https://wa.me/?text=Hi%20The%20Baking%20Cottage%2C%20I%20would%20like%20to%20order%20a%20cake"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative px-8 md:px-10 py-4 md:py-5 bg-gradient-to-r from-green-400 to-emerald-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 w-full sm:w-auto justify-center"
+          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-[#F47FA8]/30 bg-white/80 px-4 py-3 shadow-sm sm:mt-10">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#F47FA8]" />
+            <p className="text-sm font-medium text-[#3B241A]">Made Fresh Daily</p>
+          </div>
+        </motion.div>
+
+        <div className="relative mx-auto w-full max-w-[420px] md:hidden">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+            className="overflow-hidden rounded-[1.75rem] border border-white/70 bg-white/90 p-2 shadow-[0_24px_60px_-28px_rgba(59,36,26,0.35)]"
           >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.946 1.266 9.857 9.857 0 00-3.254 2.693 9.864 9.864 0 001.526 15.913 9.868 9.868 0 005.97 1.948h.005a9.87 9.87 0 009.861-9.861 9.883 9.883 0 00-2.868-6.957 9.873 9.873 0 00-6.99-2.999z" />
-            </svg>
-            Order on WhatsApp
-          </a>
-
-          {/* Gallery Button */}
-          <Link
-            href="#gallery"
-            className="group relative px-8 md:px-10 py-4 md:py-5 bg-white border-2 border-purple-600 text-purple-600 font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95 hover:bg-purple-50 w-full sm:w-auto flex items-center gap-2 justify-center"
-          >
-            <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            View Gallery
-          </Link>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.3rem]">
+              <Image
+                src={heroImages[0]?.src ?? '/images/hero-cake.jpg'}
+                alt="Luxury homemade cake from The Baking Cottage"
+                fill
+                sizes="92vw"
+                className="object-cover"
+                placeholder="blur"
+                blurDataURL={heroImages[0]?.blurDataURL}
+                priority
+              />
+            </div>
+          </motion.div>
         </div>
 
-        {/* Stats */}
-        <div className="mt-16 md:mt-20 pt-12 border-t border-purple-200/30 grid grid-cols-2 md:grid-cols-3 gap-8">
-          <div className="animate-fadeIn">
-            <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">100%</p>
-            <p className="text-sm md:text-base text-gray-600 mt-1">Halal Certified</p>
-          </div>
-          <div className="animate-fadeIn">
-            <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-600 to-amber-600 bg-clip-text text-transparent">Fresh</p>
-            <p className="text-sm md:text-base text-gray-600 mt-1">Made to Order</p>
-          </div>
-          <div className="col-span-2 md:col-span-1 animate-fadeIn">
-            <p className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-amber-600 to-pink-600 bg-clip-text text-transparent">Edinburgh</p>
-            <p className="text-sm md:text-base text-gray-600 mt-1">Local & Proud</p>
-          </div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut', delay: 0.15 }}
+          className="relative mx-auto hidden h-[460px] w-full max-w-[480px] md:block sm:h-[560px]"
+        >
+          {heroImages.map((image, index) => (
+            <motion.div
+              key={image.src}
+              className={cn(
+                'absolute overflow-hidden rounded-[1.55rem] border border-white/70 bg-white/90 p-2 shadow-[0_24px_60px_-28px_rgba(59,36,26,0.35)]',
+                collageLayout[index] ?? collageLayout[0]
+              )}
+              animate={{ y: [0, -8, 0] }}
+              transition={{
+                duration: 4 + index * 0.5,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: index * 0.12,
+              }}
+            >
+              <div className="relative h-full w-full overflow-hidden rounded-[1.15rem]">
+                <Image
+                  src={image.src}
+                  alt={`Featured cake ${index + 1}`}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 28vw"
+                  className="object-cover"
+                  placeholder="blur"
+                  blurDataURL={image.blurDataURL}
+                  priority={index < 2}
+                />
+              </div>
+            </motion.div>
+          ))}
+          <div className="pointer-events-none absolute -bottom-3 left-1/2 h-9 w-56 -translate-x-1/2 rounded-full bg-[#3B241A]/15 blur-2xl" />
+        </motion.div>
       </div>
-
-      {/* Tailwind CSS Animation */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-        .animate-fadeIn:nth-child(2) {
-          animation-delay: 0.1s;
-        }
-        .animate-fadeIn:nth-child(3) {
-          animation-delay: 0.2s;
-        }
-        .animate-fadeIn:nth-child(4) {
-          animation-delay: 0.3s;
-        }
-        .animate-fadeIn:nth-child(5) {
-          animation-delay: 0.4s;
-        }
-        .animate-fadeIn:nth-child(6) {
-          animation-delay: 0.5s;
-        }
-      `}</style>
     </section>
   );
 }
