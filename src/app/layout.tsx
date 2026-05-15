@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   title: "The Baking Cottage",
   description: "Luxury homemade cakes in Edinburgh.",
   icons: {
-    icon: '/images/logos/logo.jpg',
-    apple: '/images/logos/logo.jpg',
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 };
 
