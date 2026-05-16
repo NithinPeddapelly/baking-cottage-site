@@ -1,3 +1,6 @@
+'use client';
+
+import { track } from '@vercel/analytics';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -60,6 +63,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
+                onClick={() => social.label === 'WhatsApp' && track('whatsapp_click', { source: 'footer' })}
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white p-2 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-110"
               >
                 <Image src={social.image} alt={social.label} width={28} height={28} className="h-7 w-7 object-contain" />

@@ -1,3 +1,6 @@
+'use client';
+
+import { track } from '@vercel/analytics';
 import { buttonVariants } from '@/components/ui/button';
 
 type CustomOrderBannerProps = {
@@ -22,7 +25,7 @@ export default function CustomOrderBanner({ whatsappUrl }: CustomOrderBannerProp
                 event.
               </p>
             </div>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={buttonVariants({ size: 'lg' })}>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { source: 'custom_order_banner' })} className={buttonVariants({ size: 'lg' })}>
               Start Custom Order
             </a>
           </div>

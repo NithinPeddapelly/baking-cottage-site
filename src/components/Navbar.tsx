@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import { track } from '@vercel/analytics';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -102,6 +103,7 @@ export default function Navbar() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => track('whatsapp_click', { source: 'navbar_desktop' })}
             className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-green-400 to-emerald-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 active:scale-95"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -210,7 +212,7 @@ export default function Navbar() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => { setIsOpen(false); track('whatsapp_click', { source: 'navbar_mobile' }); }}
                   className="block rounded-full bg-gradient-to-r from-[#F47FA8] to-[#F9A8C2] px-5 py-4 text-center text-base font-semibold text-white shadow-xl"
                 >
                   Order on WhatsApp
@@ -233,6 +235,7 @@ export default function Navbar() {
                         target={social.label === 'WhatsApp' ? '_blank' : '_blank'}
                         rel="noopener noreferrer"
                         aria-label={social.label}
+                        onClick={() => social.label === 'WhatsApp' && track('whatsapp_click', { source: 'navbar_social' })}
                         className="flex h-12 w-12 items-center justify-center rounded-full border border-[#F47FA8]/20 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:border-[#F47FA8]/40 hover:bg-[#FFF8FB]"
                       >
                         <Image src={social.image} alt={social.label} width={28} height={28} className="h-7 w-7 object-contain" />

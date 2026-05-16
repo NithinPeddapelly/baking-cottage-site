@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { track } from '@vercel/analytics';
 
 import { buttonVariants } from '@/components/ui/button';
 import type { GalleryItem } from '@/data/gallery-items';
@@ -61,6 +62,7 @@ export default function Hero({ images }: HeroProps) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => track('whatsapp_click', { source: 'hero' })}
               className={cn(buttonVariants({ variant: 'whatsapp', size: 'default' }), 'sm:h-12 sm:px-8')}
             >
               Order Now

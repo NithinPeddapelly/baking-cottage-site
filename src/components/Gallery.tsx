@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
+import { track } from '@vercel/analytics';
 
 import { buttonVariants } from '@/components/ui/button';
 import type { GalleryItem } from '@/data/gallery-items';
@@ -168,6 +169,7 @@ export default function Gallery({ images }: GalleryProps) {
             href="https://wa.me/447733032675?text=Hi%20The%20Baking%20Cottage%2C%20I%27d%20like%20to%20order%20a%20cake"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => track('whatsapp_click', { source: 'gallery' })}
             className={buttonVariants({ variant: 'luxury', size: 'lg' })}
           >
             Request a Custom Design

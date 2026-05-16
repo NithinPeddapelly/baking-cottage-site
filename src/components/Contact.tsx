@@ -1,3 +1,6 @@
+'use client';
+
+import { track } from '@vercel/analytics';
 import { buttonVariants } from '@/components/ui/button';
 
 type ContactProps = {
@@ -17,7 +20,7 @@ export default function Contact({ whatsappUrl }: ContactProps) {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={buttonVariants({ size: 'lg' })}>
+            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { source: 'contact' })} className={buttonVariants({ size: 'lg' })}>
               Order on WhatsApp
             </a>
             <a
