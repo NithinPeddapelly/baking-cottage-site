@@ -1,36 +1,106 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1 align="center">🎂 The Baking Cottage</h1>
+<p align="center"><strong>A premium luxury bakery website crafted for a modern boutique cake brand.</strong></p>
 
-## Getting Started
+---
 
-First, run the development server:
+## ✨ About
+
+The Baking Cottage is a fully responsive premium bakery website designed to showcase custom cakes, cupcakes, and celebration desserts through an elegant and visually immersive experience.
+
+The project was built with a strong focus on:
+- luxury visual presentation,
+- smooth animations,
+- mobile responsiveness,
+- Instagram-inspired galleries,
+- and modern customer engagement.
+
+The website combines boutique aesthetics with high-performance frontend engineering to create a premium digital presence for a growing bakery brand.
+
+---
+
+## 🌟 Features
+
+- **Premium Responsive Design**
+- **Instagram-Style Cake Showcase**
+- **Category-Based Gallery Filtering**
+- **Luxury Mobile & Desktop Experience**
+- **Smooth Framer Motion Animations**
+- **WhatsApp Ordering Integration**
+- **Google Maps Location Section**
+- **Social Media Integration**
+- **Modern UI/UX Design System**
+- **Optimized Image Organization**
+- **Floating Contact Actions**
+- **Custom Cake Promotion Sections**
+- **Elegant Testimonials Marquee**
+- **SEO-Friendly Structure**
+
+---
+
+## 🎨 Design Philosophy
+
+The visual identity was inspired directly by the bakery’s cakes:
+- vibrant pastel tones,
+- soft luxury aesthetics,
+- warm cream backgrounds,
+- boutique-style typography,
+- and elegant motion design.
+
+### Core Palette
+- Vanilla Cream → `#FDFBF4`
+- Espresso Cocoa → `#3B241A`
+- Strawberry Frosting → `#F47FA8`
+- Pistachio Cream → `#B7C96B`
+- Lavender Buttercream → `#C6B4E1`
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **Next.js 16**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion**
+
+### UI & Utilities
+- **Lucide React**
+- **clsx**
+- **tailwind-merge**
+- **class-variance-authority**
+
+### Deployment
+- **Vercel**
+
+---
+
+## 📱 Website Sections
+
+- Hero Landing Section
+- Featured Cake Categories
+- Dynamic Cake Gallery
+- Customer Testimonials
+- Instagram Showcase
+- Custom Order Banner
+- Contact Section
+- Embedded Google Maps
+- Social Footer
+- Floating WhatsApp Button
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# Clone the repository
+git clone https://github.com/NithinPeddapelly/baking-cottage-site
+
+# Navigate to the project directory
+cd baking-cottage-site
+
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
